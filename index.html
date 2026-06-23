@@ -1,423 +1,420 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Abhishek M | Portfolio</title>
-    <meta name="description" content="Portfolio of Abhishek M, a passionate B.Tech CSE (IoT) student.">
+    <meta name="description" content="Portfolio of Abhishek M, B.Tech CSE (IoT) student. Building projects, exploring IoT technologies, and continuously improving software development skills.">
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-
 <body>
     <!-- Scroll Progress Indicator -->
     <div class="scroll-progress-container">
         <div class="scroll-progress-bar" id="scrollBar"></div>
     </div>
 
-    <!-- Mouse Follow Glow -->
+    <!-- Background Particles & Mouse Glow -->
+    <div id="particles-bg"></div>
     <div id="mouse-glow"></div>
-
-    <!-- Background Particles & Gradients -->
-    <canvas id="particles-canvas"></canvas>
-    <div class="bg-gradient bg-gradient-1"></div>
-    <div class="bg-gradient bg-gradient-2"></div>
+    <div class="glow-blob blob-1"></div>
+    <div class="glow-blob blob-2"></div>
 
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
-            <div class="logo-wrapper" style="display: flex; align-items: center; gap: 1rem;">
-                <a href="#home" class="logo">Abhishek M<span class="accent-dot">.</span></a>
-                <div class="nav-scroll-controls">
-                    <a href="#home" title="Go to top" class="btn-magnetic"><i class="fa-solid fa-chevron-up"></i></a>
-                    <a href="#contact" title="Go to bottom" class="btn-magnetic"><i class="fa-solid fa-chevron-down"></i></a>
-                </div>
-            </div>
-                <ul class="nav-links">
-                    <li><a href="#home" class="active">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#projects">Project</a></li>
-                    <li><a href="#github">Open Source</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#academic-timeline">Timeline</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
+            <a href="#home" class="logo">Abhishek M<span class="accent-dot">.</span></a>
+            <ul class="nav-links">
+                <li><a href="#home" class="nav-item active">Home</a></li>
+                <li><a href="#building" class="nav-item">Building</a></li>
+                <li><a href="#about" class="nav-item">About</a></li>
+                <li><a href="#projects" class="nav-item">Projects</a></li>
+                <li><a href="#skills" class="nav-item">Skills</a></li>
+                <li><a href="#timeline" class="nav-item">Timeline</a></li>
+                <li><a href="#contact" class="nav-item">Contact</a></li>
+                <li><a href="https://linkedin.com/in/abhishek-m-444256419" target="_blank" class="nav-item" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a></li>
+            </ul>
             <div class="mobile-toggle">
                 <i class="fa-solid fa-bars"></i>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero section-spacing">
-        <div class="section-container hero-container">
-            <div class="hero-content reveal">
-                <h1 class="hero-title">Hi, I am<br><span class="text-gradient">Abhishek M</span></h1>
-                <h2 class="hero-subtitle">
-                    <span id="typewriter" class="typewriter-text"></span><span class="typewriter-cursor">|</span>
-                </h2>
-
-                <p class="hero-desc">
-                    A passionate learner and builder constantly exploring the intersection of software engineering and
-                    the Internet of Things to solve practical real-world challenges.
-                </p>
-                <div class="hero-buttons">
-                    <a href="#projects" class="btn btn-primary btn-magnetic">Explore Work <i
-                            class="fa-solid fa-arrow-right"></i></a>
-                    <a href="#contact" class="btn btn-glass btn-magnetic">Let's Connect</a>
-                </div>
-            </div>
-
-            <div class="hero-visual reveal parallax-element" data-speed="0.05">
-                <div class="portrait-wrapper">
-                    <!-- Image loaded as a background to prevent dragging and feel inbuilt -->
-                    <div class="founder-img floating-anim" style="background-image: url('assets/profile.png');"></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="about section-spacing">
-        <div class="section-container">
-            <h2 class="section-title reveal">My <span class="text-primary">Story</span></h2>
-            <div class="glass-card about-card reveal hover-glass">
-                <p>I am a passionate technology student currently pursuing my <strong>B.Tech in Computer Science and
-                        Engineering (IoT)</strong>. Having completed two years of my academic journey and now entering
-                    my third year, my focus is fully on bridging the gap between theoretical knowledge and practical
-                    software engineering.</p>
-                <p>My interest in technology isn't just about passing exams; it's driven by an authentic
-                    <strong>learning and growth mindset</strong>. I love getting my hands dirty by building real
-                    solutions, whether it's experimenting with hardware-software integration, writing scripts, or
-                    designing user-centric web applications.</p>
-                <p>I view every project as a stepping stone. While I am not an industry expert yet, I am a dedicated
-                    builder who is continuously improving my skills, writing cleaner code, and striving to become a
-                    capable software engineer ready for the challenges of tomorrow.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="projects section-spacing">
-        <div class="section-container">
-            <h2 class="section-title reveal">Featured <span class="text-purple">Projects</span></h2>
-            <div class="project-grid">
-                <!-- Smart Schedule App -->
-                <div class="glass-card project-card reveal hover-glass">
-                    <div class="project-image-placeholder">
-                        <i class="fa-solid fa-calendar-check text-primary"></i>
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero section-padding">
+            <div class="container hero-container">
+                <div class="hero-content reveal fade-bottom">
+                    <h1 class="hero-title">Abhishek M</h1>
+                    <h2 class="hero-subtitle">
+                        <span id="typewriter"></span><span class="typewriter-cursor">|</span>
+                    </h2>
+                    <p class="hero-desc">
+                        Building projects, exploring IoT technologies, and continuously improving software development skills through practical experience and hands-on learning.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#projects" class="btn btn-primary">View Projects <i class="fa-solid fa-arrow-right"></i></a>
+                        <a href="https://github.com/abhishek01032007-pixel" target="_blank" class="btn btn-outline"><i class="fa-brands fa-github"></i> GitHub</a>
+                        <a href="https://linkedin.com/in/abhishek-m-444256419" target="_blank" class="btn btn-outline"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+                        <a href="#contact" class="btn btn-ghost">Contact</a>
                     </div>
-                    <div class="project-content">
-                        <h3>Smart Schedule & Attendance App</h3>
-                        <p>A comprehensive productivity tool engineered to help students manage complex tasks, daily
-                            scheduling, and track attendance seamlessly. Solves real-world college scheduling
-                            bottlenecks.</p>
-                        <div class="project-tech">
+                </div>
+                <div class="hero-visual reveal fade-left">
+                    <div class="portrait-wrapper">
+                        <!-- Floating portrait -->
+                        <img src="assets/profile.png" alt="Abhishek M Portrait" class="floating-portrait" onerror="this.src='https://ui-avatars.com/api/?name=Abhishek+M&background=00D084&color=fff&size=512';">
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-down-indicator">
+                <p>Scroll down</p>
+                <i class="fa-solid fa-chevron-down animated-bounce"></i>
+            </div>
+        </section>
+
+        <!-- What I'm Building Section -->
+        <section id="building" class="building section-padding">
+            <div class="container">
+                <h2 class="section-heading reveal fade-bottom">Currently <span class="text-accent">Building</span></h2>
+                
+                <div class="building-card glass-panel reveal fade-bottom">
+                    <div class="status-badge"><span class="pulse-dot"></span> In Progress</div>
+                    <h3>Smart Schedule App</h3>
+                    <p>An offline-first productivity and schedule management application designed to help students organize academic activities efficiently.</p>
+                    
+                    <div class="feature-grid">
+                        <div class="feature-item"><i class="fa-solid fa-camera"></i> OCR timetable scanning</div>
+                        <div class="feature-item"><i class="fa-solid fa-clipboard-user"></i> Attendance management</div>
+                        <div class="feature-item"><i class="fa-solid fa-database"></i> SQLite storage</div>
+                        <div class="feature-item"><i class="fa-solid fa-cloud"></i> Supabase auth</div>
+                        <div class="feature-item"><i class="fa-solid fa-wifi"></i> Offline-first architecture</div>
+                        <div class="feature-item"><i class="fa-solid fa-calendar-check"></i> Smart scheduling</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about section-padding">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-text reveal fade-right">
+                        <h2 class="section-heading">About <span class="text-primary">Me</span></h2>
+                        <p class="lead">I am a motivated engineering student currently in my 3rd year of <strong>B.Tech Computer Science and Engineering (IoT)</strong> at B.S. Abdur Rahman Crescent Institute of Science and Technology.</p>
+                        <p>My journey in technology is driven by a deep interest in software development and the Internet of Things. Rather than just studying theory, I believe in a continuous learning mindset fueled by building practical, real-world projects.</p>
+                        <p>Whether I'm connecting sensors to an ESP32 or structuring a local SQLite database for a productivity app, my goal is to gain hands-on experience and continuously improve my technical foundations as I prepare for professional internships.</p>
+                    </div>
+                    <div class="about-stats reveal fade-left">
+                        <div class="stat-card glass-panel">
+                            <i class="fa-solid fa-graduation-cap text-primary"></i>
+                            <h4>Education</h4>
+                            <p>B.Tech CSE (IoT)</p>
+                            <span class="sub-text">Crescent Institute</span>
+                        </div>
+                        <div class="stat-card glass-panel">
+                            <i class="fa-solid fa-laptop-code text-secondary"></i>
+                            <h4>Focus</h4>
+                            <p>Software & IoT</p>
+                            <span class="sub-text">Building Projects</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Projects Section -->
+        <section id="projects" class="projects section-padding">
+            <div class="container">
+                <h2 class="section-heading reveal fade-bottom">Featured <span class="text-primary">Projects</span></h2>
+                
+                <div class="projects-grid">
+                    <!-- Project 1 -->
+                    <div class="project-card glass-panel reveal fade-bottom">
+                        <div class="project-header">
+                            <div class="project-status status-progress">In Progress</div>
+                            <a href="https://github.com/abhishek01032007-pixel" target="_blank" class="project-github"><i class="fa-brands fa-github"></i></a>
+                        </div>
+                        <h3>Smart Schedule App</h3>
+                        <p>Offline-first productivity and schedule management application tailored for students.</p>
+                        <div class="tech-stack">
+                            <span>SQLite</span>
+                            <span>Supabase</span>
+                            <span>OCR</span>
+                            <span>Mobile Dev</span>
+                        </div>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div class="project-card glass-panel reveal fade-bottom" style="transition-delay: 100ms;">
+                        <div class="project-header">
+                            <div class="project-status status-completed">Completed</div>
+                            <a href="https://github.com/abhishek01032007-pixel" target="_blank" class="project-github"><i class="fa-brands fa-github"></i></a>
+                        </div>
+                        <h3>AI Bot</h3>
+                        <p>A chatbot and AI-powered assistant project created for learning conversational interfaces and AI integration concepts.</p>
+                        <div class="tech-stack">
                             <span>HTML</span>
                             <span>CSS</span>
                             <span>JavaScript</span>
                         </div>
-                        <a href="https://github.com/abhishek01032007-pixel" target="_blank" class="btn-text">View on
-                            GitHub <i class="fa-solid fa-arrow-right"></i></a>
                     </div>
-                </div>
 
-                <!-- Project: ai-bot -->
-                <div class="glass-card project-card reveal hover-glass">
-                    <div class="project-image-placeholder">
-                        <i class="fa-solid fa-robot text-purple"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3>AI Bot</h3>
-                        <p>An artificial intelligence bot project demonstrating core machine learning or automation
-                            concepts developed during my studies.</p>
-                        <div class="project-tech">
-                            <span>Python</span>
-                            <span>AI</span>
+                    <!-- Project 3 -->
+                    <div class="project-card glass-panel reveal fade-bottom" style="transition-delay: 200ms;">
+                        <div class="project-header">
+                            <div class="project-status status-completed">Completed</div>
+                            <a href="https://github.com/abhishek01032007-pixel" target="_blank" class="project-github"><i class="fa-brands fa-github"></i></a>
                         </div>
-                        <a href="https://github.com/abhishek01032007-pixel/ai-bot" target="_blank" class="btn-text">View
-                            on GitHub <i class="fa-solid fa-arrow-right"></i></a>
-                    </div>
-                </div>
-
-                <!-- Project: abhishek (Profile/Portfolio) -->
-                <div class="glass-card project-card reveal hover-glass">
-                    <div class="project-image-placeholder">
-                        <i class="fa-solid fa-user-astronaut text-primary"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3>abhishek</h3>
-                        <p>My personal portfolio and profile repository showcasing my web development skills, design
-                            aesthetics, and academic journey.</p>
-                        <div class="project-tech">
-                            <span>HTML</span>
-                            <span>CSS</span>
-                            <span>JS</span>
-                        </div>
-                        <a href="https://github.com/abhishek01032007-pixel/abhishek" target="_blank"
-                            class="btn-text">View on GitHub <i class="fa-solid fa-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- GitHub Showcase Section -->
-    <section id="github" class="github section-spacing">
-        <div class="section-container">
-            <h2 class="section-title reveal">Open <span class="text-primary">Source</span></h2>
-            <div class="glass-card github-card reveal hover-glass">
-                <i class="fa-brands fa-github github-icon"></i>
-                <div class="github-content">
-                    <h3>My Development Journey</h3>
-                    <p>All my academic projects, experiments, and practical builds are hosted on GitHub. I strongly
-                        believe in learning in public and actively exploring open-source software to improve my coding
-                        standards.</p>
-                    <div class="github-stats">
-                        <div class="stat">
-                            <span class="stat-number counter" data-target="3">0</span>
-                            <span class="stat-label">Repositories</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number counter" data-target="120">0</span>
-                            <span class="stat-label">Contributions</span>
-                        </div>
-                    </div>
-                    <a href="https://github.com/abhishek01032007-pixel" target="_blank"
-                        class="btn btn-primary btn-magnetic"><i class="fa-brands fa-github"></i> Visit My GitHub
-                        Profile</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="skills section-spacing">
-        <div class="section-container">
-            <h2 class="section-title reveal">Technical <span class="text-purple">Arsenal</span></h2>
-            <div class="skills-grid reveal">
-                <div class="skill-category glass-card hover-glass">
-                    <h3><i class="fa-solid fa-code text-primary"></i> Programming</h3>
-                    <div class="skill-tags">
-                        <span>Python</span>
-                        <span>Java</span>
-                        <span>C++</span>
-                        <span>JavaScript</span>
-                    </div>
-                </div>
-                <div class="skill-category glass-card hover-glass">
-                    <h3><i class="fa-solid fa-globe text-purple"></i> Frontend</h3>
-                    <div class="skill-tags">
-                        <span>HTML</span>
-                        <span>CSS</span>
-                    </div>
-                </div>
-                <div class="skill-category glass-card hover-glass">
-                    <h3><i class="fa-solid fa-server text-primary"></i> Backend & DB</h3>
-                    <div class="skill-tags">
-                        <span>Supabase</span>
-                        <span>SQLite</span>
-                        <span>MySQL</span>
-                        <span>SQL</span>
-                    </div>
-                </div>
-                <div class="skill-category glass-card hover-glass">
-                    <h3><i class="fa-solid fa-wrench text-purple"></i> Tools</h3>
-                    <div class="skill-tags">
-                        <span>Git</span>
-                        <span>GitHub</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Learning Journey Section -->
-    <section id="learning" class="learning section-spacing">
-        <div class="section-container">
-            <h2 class="section-title reveal">What I'm <span class="text-primary">Currently Learning</span></h2>
-            <div class="learning-grid reveal">
-                <div class="learning-card glass-card hover-glass">
-                    <i class="fa-solid fa-laptop-code text-primary"></i>
-                    <h4>Modern Web Development</h4>
-                    <p>Diving deeper into advanced CSS layouts and semantic HTML.</p>
-                </div>
-                <div class="learning-card glass-card hover-glass">
-                    <i class="fa-brands fa-js text-purple"></i>
-                    <h4>JavaScript</h4>
-                    <p>Mastering core JS concepts, DOM manipulation, and ES6+ features.</p>
-                </div>
-                <div class="learning-card glass-card hover-glass">
-                    <i class="fa-solid fa-microchip text-primary"></i>
-                    <h4>IoT Technologies</h4>
-                    <p>Connecting hardware sensors with software backends.</p>
-                </div>
-                <div class="learning-card glass-card hover-glass">
-                    <i class="fa-solid fa-gears text-purple"></i>
-                    <h4>Software Concepts</h4>
-                    <p>Studying clean code architecture and efficient algorithms.</p>
-                </div>
-                <div class="learning-card glass-card hover-glass">
-                    <i class="fa-solid fa-robot text-primary"></i>
-                    <h4>AI Tools</h4>
-                    <p>Learning to leverage AI tools to boost developer productivity.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Education Timeline Section -->
-    <section id="academic-timeline" class="academic-timeline section-spacing">
-        <div class="section-container">
-            <h2 class="section-title reveal">Academic <span class="text-purple">Timeline</span></h2>
-            <div class="timeline reveal">
-                <div class="timeline-header glass-card">
-                    <h3>B.Tech Computer Science and Engineering (IoT)</h3>
-                    <p>B.S. Abdur Rahman Crescent Institute of Science and Technology</p>
-                </div>
-
-                <div class="timeline-items">
-                    <div class="timeline-item reveal">
-                        <div class="timeline-dot completed"></div>
-                        <div class="timeline-content glass-card hover-glass">
-                            <h4>Completed: Year 1</h4>
-                            <p>Built a strong foundation in core engineering, mathematics, and basic programming
-                                fundamentals.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item reveal">
-                        <div class="timeline-dot completed"></div>
-                        <div class="timeline-content glass-card hover-glass">
-                            <h4>Completed: Year 2</h4>
-                            <p>Expanded knowledge in data structures, object-oriented programming (Java/C++), and
-                                foundational IoT protocols.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item reveal">
-                        <div class="timeline-dot next"></div>
-                        <div class="timeline-content glass-card hover-glass active-year">
-                            <span class="badge">Current</span>
-                            <h4>Next: Year 3</h4>
-                            <p>Preparing to tackle advanced software engineering concepts, database management, and
-                                building practical full-stack IoT solutions.</p>
+                        <h3>Portfolio Website</h3>
+                        <p>A modern, premium, Vercel-inspired personal portfolio designed entirely from scratch to showcase my skills and projects.</p>
+                        <div class="tech-stack">
+                            <span>HTML5</span>
+                            <span>CSS3</span>
+                            <span>JavaScript</span>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Achievements Section -->
-    <section id="achievements" class="achievements section-spacing">
-        <div class="section-container">
-            <h2 class="section-title reveal">Milestones & <span class="text-primary">Achievements</span></h2>
-            <div class="achievements-grid reveal">
-                <div class="glass-card hover-glass achievement-card">
-                    <i class="fa-solid fa-graduation-cap text-purple"></i>
-                    <h4>Academic Mindset</h4>
-                    <p>Successfully navigating foundational computer science courses while building a strong academic
-                        mindset.</p>
+        <!-- Technical Skills Section -->
+        <section id="skills" class="skills section-padding">
+            <div class="container">
+                <div class="section-header reveal fade-bottom">
+                    <h2 class="section-heading">Technical Skills & <span class="text-secondary">Technologies</span></h2>
+                    <p class="section-subheading">Technologies, tools, and platforms I use while learning, building projects, and exploring new ideas.</p>
                 </div>
-                <div class="glass-card hover-glass achievement-card">
-                    <i class="fa-solid fa-rocket text-primary"></i>
-                    <h4>Personal Projects</h4>
-                    <p>Developed and deployed independent utility applications, moving beyond basic college assignments.
-                    </p>
-                </div>
-                <div class="glass-card hover-glass achievement-card">
-                    <i class="fa-solid fa-book-open text-purple"></i>
-                    <h4>Learning Achievements</h4>
-                    <p>Consistent growth in self-taught web technologies and version control (Git/GitHub) methodologies.
-                    </p>
+                
+                <div class="skills-grid reveal fade-bottom">
+                    <!-- Card 1 -->
+                    <div class="skill-card glass-panel">
+                        <div class="skill-icon"><i class="fa-solid fa-code"></i></div>
+                        <h3>Programming Languages</h3>
+                        <div class="tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">C</span>
+                            <span class="tag">C++</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Card 2 -->
+                    <div class="skill-card glass-panel">
+                        <div class="skill-icon"><i class="fa-solid fa-laptop"></i></div>
+                        <h3>Web Development</h3>
+                        <div class="tags">
+                            <span class="tag">HTML</span>
+                            <span class="tag">CSS</span>
+                            <span class="tag">JavaScript</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="skill-card glass-panel">
+                        <div class="skill-icon"><i class="fa-solid fa-database"></i></div>
+                        <h3>Databases & Storage</h3>
+                        <div class="tags">
+                            <span class="tag">SQL</span>
+                            <span class="tag">SQLite</span>
+                            <span class="tag">Supabase</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="skill-card glass-panel">
+                        <div class="skill-icon"><i class="fa-solid fa-wrench"></i></div>
+                        <h3>Tools & Version Control</h3>
+                        <div class="tags">
+                            <span class="tag">Git</span>
+                            <span class="tag">GitHub</span>
+                            <span class="tag">VS Code</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 5 -->
+                    <div class="skill-card glass-panel card-wide">
+                        <div class="skill-icon"><i class="fa-solid fa-microchip"></i></div>
+                        <h3>IoT & Technology</h3>
+                        <div class="tags">
+                            <span class="tag">Internet of Things</span>
+                            <span class="tag">Embedded Systems</span>
+                            <span class="tag">Sensors</span>
+                            <span class="tag">Cloud-Based Systems</span>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact section-spacing">
-        <div class="section-container">
-            <h2 class="section-title reveal">Let's <span class="text-primary">Connect</span></h2>
-            <div class="contact-wrapper">
-                <div class="contact-info reveal">
-                    <p class="contact-text">Whether it's for an internship opportunity, a project collaboration, or just
-                        a tech chat, feel free to reach out!</p>
-
-                    <a href="mailto:abhishek01032007@gmail.com" class="glass-card info-card hover-glass btn-magnetic">
-                        <i class="fa-solid fa-envelope"></i>
-                        <div>
-                            <h4>Email</h4>
-                            <span>abhishek01032007@gmail.com</span>
+        <!-- Learning Journey Timeline -->
+        <section id="timeline" class="timeline-section section-padding">
+            <div class="container">
+                <h2 class="section-heading text-center reveal fade-bottom">Learning <span class="text-primary">Journey</span></h2>
+                
+                <div class="timeline-container reveal fade-bottom">
+                    <!-- 2024 -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content glass-panel">
+                            <span class="timeline-year text-primary">2024</span>
+                            <h3>Started Engineering</h3>
+                            <p>Began B.Tech Computer Science and Engineering (IoT) at Crescent Institute.</p>
                         </div>
-                    </a>
-                    <a href="tel:+919444484679" class="glass-card info-card hover-glass btn-magnetic">
-                        <i class="fa-solid fa-phone"></i>
-                        <div>
-                            <h4>Phone</h4>
-                            <span>+91 9444484679</span>
+                    </div>
+                    
+                    <!-- 2025 -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content glass-panel">
+                            <span class="timeline-year text-secondary">2025</span>
+                            <h3>Foundations</h3>
+                            <p>Learned Python, C, and C++. Started Building Projects.</p>
                         </div>
-                    </a>
-                    <a href="https://github.com/abhishek01032007-pixel" target="_blank"
-                        class="glass-card info-card hover-glass btn-magnetic">
-                        <i class="fa-brands fa-github"></i>
-                        <div>
-                            <h4>GitHub Profile</h4>
-                            <span>abhishek01032007-pixel</span>
+                    </div>
+                    
+                    <!-- 2026 -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot active-dot"></div>
+                        <div class="timeline-content glass-panel active-panel">
+                            <span class="timeline-year text-primary">2026</span>
+                            <h3>Software Development</h3>
+                            <p>Created Portfolio Website, developed AI Bot, and began building the Smart Schedule App.</p>
                         </div>
-                    </a>
-                    <a href="https://linkedin.com/in/abhishek-m-444256419" target="_blank"
-                        class="glass-card info-card hover-glass btn-magnetic">
-                        <i class="fa-brands fa-linkedin-in"></i>
-                        <div>
-                            <h4>LinkedIn</h4>
-                            <span>abhishek-m-444256419</span>
+                    </div>
+                    
+                    <!-- 2027 -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot future-dot"></div>
+                        <div class="timeline-content glass-panel future-panel">
+                            <span class="timeline-year text-muted">2027</span>
+                            <h3>Future Goals</h3>
+                            <p>Preparing for internships and advanced engineering projects.</p>
                         </div>
-                    </a>
+                    </div>
                 </div>
-                <div class="contact-form-container reveal">
-                    <form class="glass-card contact-form"
-                        onsubmit="event.preventDefault(); alert('Thanks for reaching out! Form submitted.');">
-                        <div class="form-group">
-                            <label>Name</label>
-                            <input type="text" placeholder="John Doe" required>
+            </div>
+        </section>
+
+        <!-- GitHub Journey & Achievements -->
+        <section id="github" class="github-achievements section-padding">
+            <div class="container">
+                <div class="two-column-layout">
+                    <!-- GitHub -->
+                    <div class="github-section reveal fade-right">
+                        <h2 class="section-heading">GitHub <span class="text-secondary">Journey</span></h2>
+                        <div class="github-card glass-panel">
+                            <i class="fa-brands fa-github github-logo"></i>
+                            <div class="github-info">
+                                <h3>@abhishek01032007-pixel</h3>
+                                <p>My open-source journey, containing repositories for my Portfolio Website, Smart Schedule App, AI Bot, and other experimental projects.</p>
+                                <a href="https://github.com/abhishek01032007-pixel" target="_blank" class="btn btn-outline mt-3">View GitHub Profile</a>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label>Email</label>
-                            <input type="email" placeholder="john@example.com" required>
+                    </div>
+                    
+                    <!-- Achievements -->
+                    <div class="achievements-section reveal fade-left">
+                        <h2 class="section-heading">Stats & <span class="text-primary">Milestones</span></h2>
+                        <div class="stats-grid">
+                            <div class="stat-box glass-panel">
+                                <span class="counter" data-target="3">0</span><span class="plus">+</span>
+                                <p>Projects Built</p>
+                            </div>
+                            <div class="stat-box glass-panel">
+                                <span class="counter-text text-main" style="font-size: 2.5rem; font-weight: 800;">Multiple</span>
+                                <p>Repositories</p>
+                            </div>
+                            <div class="stat-box glass-panel">
+                                <span class="counter" data-target="2">0</span><span class="plus">+</span>
+                                <p>Years Learning</p>
+                            </div>
+                            <div class="stat-box glass-panel">
+                                <span class="counter-text text-main" style="font-size: 2.5rem; font-weight: 800;">Live</span>
+                                <p>Portfolio Website</p>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label>Message</label>
-                            <textarea rows="5" placeholder="How can I help you?" required></textarea>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact section-padding">
+            <div class="container">
+                <div class="contact-card glass-panel reveal fade-bottom">
+                    <div class="contact-header">
+                        <h2 class="section-heading">Let's <span class="text-primary">Connect</span></h2>
+                        <p>I'm always open to discussing tech, projects, or internship opportunities.</p>
+                    </div>
+                    
+                    <div class="contact-methods">
+                        <a href="mailto:abhishek01032007@gmail.com" class="contact-method glass-panel">
+                            <div class="icon-circle"><i class="fa-regular fa-envelope"></i></div>
+                            <div>
+                                <h4>Email</h4>
+                                <p>abhishek01032007@gmail.com</p>
+                            </div>
+                        </a>
+                        
+                        <div class="contact-method glass-panel">
+                            <div class="icon-circle"><i class="fa-solid fa-phone"></i></div>
+                            <div>
+                                <h4>Phone</h4>
+                                <p>+91 9444484679</p>
+                            </div>
                         </div>
-                        <button type="submit" class="btn btn-primary w-full btn-magnetic">Send Message <i
-                                class="fa-solid fa-paper-plane"></i></button>
+                        
+                        <a href="https://github.com/abhishek01032007-pixel" target="_blank" class="contact-method glass-panel">
+                            <div class="icon-circle"><i class="fa-brands fa-github"></i></div>
+                            <div>
+                                <h4>GitHub</h4>
+                                <p>abhishek01032007-pixel</p>
+                            </div>
+                        </a>
+                        
+                        <a href="https://linkedin.com/in/abhishek-m-444256419" target="_blank" class="contact-method glass-panel">
+                            <div class="icon-circle"><i class="fa-brands fa-linkedin"></i></div>
+                            <div>
+                                <h4>LinkedIn</h4>
+                                <p>Abhishek M</p>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <form class="contact-form" onsubmit="event.preventDefault(); alert('Message feature coming soon! Please use my email.');">
+                        <div class="form-row">
+                            <input type="text" placeholder="Your Name" required>
+                            <input type="email" placeholder="Your Email" required>
+                        </div>
+                        <input type="text" placeholder="Subject" required>
+                        <textarea rows="4" placeholder="Your Message" required></textarea>
+                        <button type="submit" class="btn btn-primary w-full">Send Message <i class="fa-solid fa-paper-plane"></i></button>
                     </form>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
+    <!-- Footer -->
     <footer>
-        <div class="section-container">
+        <div class="container">
             <div class="footer-content">
-                <a href="#home" class="logo">Abhishek M<span class="accent-dot">.</span></a>
-                <p>&copy; 2026 Abhishek M. Passionate Technology Student.</p>
-                <div class="social-links">
-                    <a href="https://github.com/abhishek01032007-pixel" target="_blank" class="btn-magnetic"><i
-                            class="fa-brands fa-github"></i></a>
-                    <a href="https://linkedin.com/in/abhishek-m-444256419" target="_blank" class="btn-magnetic"><i
-                            class="fa-brands fa-linkedin-in"></i></a>
-                    <a href="mailto:abhishek01032007@gmail.com" class="btn-magnetic"><i
-                            class="fa-solid fa-envelope"></i></a>
+                <h3>Designed & Built by Abhishek M</h3>
+                <p>B.Tech CSE (IoT)</p>
+                <div class="footer-socials" style="display: flex; gap: 1.5rem; margin-top: 1rem;">
+                    <a href="https://github.com/abhishek01032007-pixel" target="_blank" style="color: var(--text-muted); font-size: 1.5rem;"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://linkedin.com/in/abhishek-m-444256419" target="_blank" style="color: var(--text-muted); font-size: 1.5rem;"><i class="fa-brands fa-linkedin"></i></a>
                 </div>
+                <p class="copyright">&copy; 2026 All Rights Reserved</p>
             </div>
         </div>
     </footer>
 
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top" aria-label="Go to top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
     <script src="script.js"></script>
 </body>
-
 </html>
