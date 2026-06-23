@@ -938,7 +938,7 @@ footer {
     .hero-container {
         flex-direction: column-reverse;
         text-align: center;
-        padding-top: 6rem;
+        padding-top: 2rem;
     }
 
     .hero-title {
@@ -986,8 +986,8 @@ footer {
     }
 
     .portrait-wrapper {
-        max-width: 280px;
-        height: 350px;
+        max-width: 340px;
+        height: 420px;
     }
 
     #mouse-glow {
