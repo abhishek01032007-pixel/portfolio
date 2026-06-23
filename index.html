@@ -1,420 +1,280 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abhishek M | Portfolio</title>
-    <meta name="description" content="Portfolio of Abhishek M, B.Tech CSE (IoT) student. Building projects, exploring IoT technologies, and continuously improving software development skills.">
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body>
-    <!-- Scroll Progress Indicator -->
-    <div class="scroll-progress-container">
-        <div class="scroll-progress-bar" id="scrollBar"></div>
-    </div>
+document.addEventListener('DOMContentLoaded', () => {
+    // 0. Mouse Glow (Flashlight Effect)
+    const mouseGlow = document.getElementById('mouse-glow');
+    let mouseX = 0, mouseY = 0;
+    let glowX = 0, glowY = 0;
 
-    <!-- Background Particles & Mouse Glow -->
-    <div id="particles-bg"></div>
-    <div id="mouse-glow"></div>
-    <div class="glow-blob blob-1"></div>
-    <div class="glow-blob blob-2"></div>
+    if (mouseGlow) {
+        document.addEventListener('mouseleave', () => {
+            mouseGlow.style.opacity = '0';
+        });
 
-    <!-- Navigation -->
-    <nav class="navbar" id="navbar">
-        <div class="nav-container">
-            <a href="#home" class="logo">Abhishek M<span class="accent-dot">.</span></a>
-            <ul class="nav-links">
-                <li><a href="#home" class="nav-item active">Home</a></li>
-                <li><a href="#building" class="nav-item">Building</a></li>
-                <li><a href="#about" class="nav-item">About</a></li>
-                <li><a href="#projects" class="nav-item">Projects</a></li>
-                <li><a href="#skills" class="nav-item">Skills</a></li>
-                <li><a href="#timeline" class="nav-item">Timeline</a></li>
-                <li><a href="#contact" class="nav-item">Contact</a></li>
-                <li><a href="https://linkedin.com/in/abhishek-m-444256419" target="_blank" class="nav-item" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a></li>
-            </ul>
-            <div class="mobile-toggle">
-                <i class="fa-solid fa-bars"></i>
-            </div>
-        </div>
-    </nav>
+        function animateGlow() {
+            // Easing formula for smooth trailing
+            glowX += (mouseX - glowX) * 0.15;
+            glowY += (mouseY - glowY) * 0.15;
+            mouseGlow.style.left = `${glowX}px`;
+            mouseGlow.style.top = `${glowY}px`;
+            requestAnimationFrame(animateGlow);
+        }
+        animateGlow();
 
-    <main>
-        <!-- Hero Section -->
-        <section id="home" class="hero section-padding">
-            <div class="container hero-container">
-                <div class="hero-content reveal fade-bottom">
-                    <h1 class="hero-title">Abhishek M</h1>
-                    <h2 class="hero-subtitle">
-                        <span id="typewriter"></span><span class="typewriter-cursor">|</span>
-                    </h2>
-                    <p class="hero-desc">
-                        Building projects, exploring IoT technologies, and continuously improving software development skills through practical experience and hands-on learning.
-                    </p>
-                    <div class="hero-buttons">
-                        <a href="#projects" class="btn btn-primary">View Projects <i class="fa-solid fa-arrow-right"></i></a>
-                        <a href="https://github.com/abhishek01032007-pixel" target="_blank" class="btn btn-outline"><i class="fa-brands fa-github"></i> GitHub</a>
-                        <a href="https://linkedin.com/in/abhishek-m-444256419" target="_blank" class="btn btn-outline"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
-                        <a href="#contact" class="btn btn-ghost">Contact</a>
-                    </div>
-                </div>
-                <div class="hero-visual reveal fade-left">
-                    <div class="portrait-wrapper">
-                        <!-- Floating portrait -->
-                        <img src="assets/profile.png" alt="Abhishek M Portrait" class="floating-portrait" onerror="this.src='https://ui-avatars.com/api/?name=Abhishek+M&background=00D084&color=fff&size=512';">
-                    </div>
-                </div>
-            </div>
-            <div class="scroll-down-indicator">
-                <p>Scroll down</p>
-                <i class="fa-solid fa-chevron-down animated-bounce"></i>
-            </div>
-        </section>
+        // Premium Text Spotlight Logic
+        const spotlightElements = document.querySelectorAll('h1, h2, h3, h4, p, li:not(.nav-links li)');
+        
+        // Add specific classes to text elements to dictate their glow color
+        spotlightElements.forEach(el => {
+            if (!el.classList.contains('hero-subtitle') && !el.classList.contains('hero-title')) {
+                if (el.tagName === 'P' || el.tagName === 'LI') {
+                    el.classList.add('spotlight-text-muted');
+                } else {
+                    el.classList.add('spotlight-text-main');
+                }
+            }
+        });
 
-        <!-- What I'm Building Section -->
-        <section id="building" class="building section-padding">
-            <div class="container">
-                <h2 class="section-heading reveal fade-bottom">Currently <span class="text-accent">Building</span></h2>
-                
-                <div class="building-card glass-panel reveal fade-bottom">
-                    <div class="status-badge"><span class="pulse-dot"></span> In Progress</div>
-                    <h3>Smart Schedule App</h3>
-                    <p>An offline-first productivity and schedule management application designed to help students organize academic activities efficiently.</p>
-                    
-                    <div class="feature-grid">
-                        <div class="feature-item"><i class="fa-solid fa-camera"></i> OCR timetable scanning</div>
-                        <div class="feature-item"><i class="fa-solid fa-clipboard-user"></i> Attendance management</div>
-                        <div class="feature-item"><i class="fa-solid fa-database"></i> SQLite storage</div>
-                        <div class="feature-item"><i class="fa-solid fa-cloud"></i> Supabase auth</div>
-                        <div class="feature-item"><i class="fa-solid fa-wifi"></i> Offline-first architecture</div>
-                        <div class="feature-item"><i class="fa-solid fa-calendar-check"></i> Smart scheduling</div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        let rafId = null;
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            if (mouseGlow.style.opacity === '0' || mouseGlow.style.opacity === '') {
+                mouseGlow.style.opacity = '1';
+            }
 
-        <!-- About Section -->
-        <section id="about" class="about section-padding">
-            <div class="container">
-                <div class="about-grid">
-                    <div class="about-text reveal fade-right">
-                        <h2 class="section-heading">About <span class="text-primary">Me</span></h2>
-                        <p class="lead">I am a motivated engineering student currently in my 3rd year of <strong>B.Tech Computer Science and Engineering (IoT)</strong> at B.S. Abdur Rahman Crescent Institute of Science and Technology.</p>
-                        <p>My journey in technology is driven by a deep interest in software development and the Internet of Things. Rather than just studying theory, I believe in a continuous learning mindset fueled by building practical, real-world projects.</p>
-                        <p>Whether I'm connecting sensors to an ESP32 or structuring a local SQLite database for a productivity app, my goal is to gain hands-on experience and continuously improve my technical foundations as I prepare for professional internships.</p>
-                    </div>
-                    <div class="about-stats reveal fade-left">
-                        <div class="stat-card glass-panel">
-                            <i class="fa-solid fa-graduation-cap text-primary"></i>
-                            <h4>Education</h4>
-                            <p>B.Tech CSE (IoT)</p>
-                            <span class="sub-text">Crescent Institute</span>
-                        </div>
-                        <div class="stat-card glass-panel">
-                            <i class="fa-solid fa-laptop-code text-secondary"></i>
-                            <h4>Focus</h4>
-                            <p>Software & IoT</p>
-                            <span class="sub-text">Building Projects</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Featured Projects Section -->
-        <section id="projects" class="projects section-padding">
-            <div class="container">
-                <h2 class="section-heading reveal fade-bottom">Featured <span class="text-primary">Projects</span></h2>
-                
-                <div class="projects-grid">
-                    <!-- Project 1 -->
-                    <div class="project-card glass-panel reveal fade-bottom">
-                        <div class="project-header">
-                            <div class="project-status status-progress">In Progress</div>
-                            <a href="https://github.com/abhishek01032007-pixel" target="_blank" class="project-github"><i class="fa-brands fa-github"></i></a>
-                        </div>
-                        <h3>Smart Schedule App</h3>
-                        <p>Offline-first productivity and schedule management application tailored for students.</p>
-                        <div class="tech-stack">
-                            <span>SQLite</span>
-                            <span>Supabase</span>
-                            <span>OCR</span>
-                            <span>Mobile Dev</span>
-                        </div>
-                    </div>
-
-                    <!-- Project 2 -->
-                    <div class="project-card glass-panel reveal fade-bottom" style="transition-delay: 100ms;">
-                        <div class="project-header">
-                            <div class="project-status status-completed">Completed</div>
-                            <a href="https://github.com/abhishek01032007-pixel" target="_blank" class="project-github"><i class="fa-brands fa-github"></i></a>
-                        </div>
-                        <h3>AI Bot</h3>
-                        <p>A chatbot and AI-powered assistant project created for learning conversational interfaces and AI integration concepts.</p>
-                        <div class="tech-stack">
-                            <span>HTML</span>
-                            <span>CSS</span>
-                            <span>JavaScript</span>
-                        </div>
-                    </div>
-
-                    <!-- Project 3 -->
-                    <div class="project-card glass-panel reveal fade-bottom" style="transition-delay: 200ms;">
-                        <div class="project-header">
-                            <div class="project-status status-completed">Completed</div>
-                            <a href="https://github.com/abhishek01032007-pixel" target="_blank" class="project-github"><i class="fa-brands fa-github"></i></a>
-                        </div>
-                        <h3>Portfolio Website</h3>
-                        <p>A modern, premium, Vercel-inspired personal portfolio designed entirely from scratch to showcase my skills and projects.</p>
-                        <div class="tech-stack">
-                            <span>HTML5</span>
-                            <span>CSS3</span>
-                            <span>JavaScript</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Technical Skills Section -->
-        <section id="skills" class="skills section-padding">
-            <div class="container">
-                <div class="section-header reveal fade-bottom">
-                    <h2 class="section-heading">Technical Skills & <span class="text-secondary">Technologies</span></h2>
-                    <p class="section-subheading">Technologies, tools, and platforms I use while learning, building projects, and exploring new ideas.</p>
-                </div>
-                
-                <div class="skills-grid reveal fade-bottom">
-                    <!-- Card 1 -->
-                    <div class="skill-card glass-panel">
-                        <div class="skill-icon"><i class="fa-solid fa-code"></i></div>
-                        <h3>Programming Languages</h3>
-                        <div class="tags">
-                            <span class="tag">Python</span>
-                            <span class="tag">C</span>
-                            <span class="tag">C++</span>
-                        </div>
-                    </div>
-                    
-                    <!-- Card 2 -->
-                    <div class="skill-card glass-panel">
-                        <div class="skill-icon"><i class="fa-solid fa-laptop"></i></div>
-                        <h3>Web Development</h3>
-                        <div class="tags">
-                            <span class="tag">HTML</span>
-                            <span class="tag">CSS</span>
-                            <span class="tag">JavaScript</span>
-                        </div>
-                    </div>
-
-                    <!-- Card 3 -->
-                    <div class="skill-card glass-panel">
-                        <div class="skill-icon"><i class="fa-solid fa-database"></i></div>
-                        <h3>Databases & Storage</h3>
-                        <div class="tags">
-                            <span class="tag">SQL</span>
-                            <span class="tag">SQLite</span>
-                            <span class="tag">Supabase</span>
-                        </div>
-                    </div>
-
-                    <!-- Card 4 -->
-                    <div class="skill-card glass-panel">
-                        <div class="skill-icon"><i class="fa-solid fa-wrench"></i></div>
-                        <h3>Tools & Version Control</h3>
-                        <div class="tags">
-                            <span class="tag">Git</span>
-                            <span class="tag">GitHub</span>
-                            <span class="tag">VS Code</span>
-                        </div>
-                    </div>
-
-                    <!-- Card 5 -->
-                    <div class="skill-card glass-panel card-wide">
-                        <div class="skill-icon"><i class="fa-solid fa-microchip"></i></div>
-                        <h3>IoT & Technology</h3>
-                        <div class="tags">
-                            <span class="tag">Internet of Things</span>
-                            <span class="tag">Embedded Systems</span>
-                            <span class="tag">Sensors</span>
-                            <span class="tag">Cloud-Based Systems</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Learning Journey Timeline -->
-        <section id="timeline" class="timeline-section section-padding">
-            <div class="container">
-                <h2 class="section-heading text-center reveal fade-bottom">Learning <span class="text-primary">Journey</span></h2>
-                
-                <div class="timeline-container reveal fade-bottom">
-                    <!-- 2024 -->
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content glass-panel">
-                            <span class="timeline-year text-primary">2024</span>
-                            <h3>Started Engineering</h3>
-                            <p>Began B.Tech Computer Science and Engineering (IoT) at Crescent Institute.</p>
-                        </div>
-                    </div>
-                    
-                    <!-- 2025 -->
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content glass-panel">
-                            <span class="timeline-year text-secondary">2025</span>
-                            <h3>Foundations</h3>
-                            <p>Learned Python, C, and C++. Started Building Projects.</p>
-                        </div>
-                    </div>
-                    
-                    <!-- 2026 -->
-                    <div class="timeline-item">
-                        <div class="timeline-dot active-dot"></div>
-                        <div class="timeline-content glass-panel active-panel">
-                            <span class="timeline-year text-primary">2026</span>
-                            <h3>Software Development</h3>
-                            <p>Created Portfolio Website, developed AI Bot, and began building the Smart Schedule App.</p>
-                        </div>
-                    </div>
-                    
-                    <!-- 2027 -->
-                    <div class="timeline-item">
-                        <div class="timeline-dot future-dot"></div>
-                        <div class="timeline-content glass-panel future-panel">
-                            <span class="timeline-year text-muted">2027</span>
-                            <h3>Future Goals</h3>
-                            <p>Preparing for internships and advanced engineering projects.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- GitHub Journey & Achievements -->
-        <section id="github" class="github-achievements section-padding">
-            <div class="container">
-                <div class="two-column-layout">
-                    <!-- GitHub -->
-                    <div class="github-section reveal fade-right">
-                        <h2 class="section-heading">GitHub <span class="text-secondary">Journey</span></h2>
-                        <div class="github-card glass-panel">
-                            <i class="fa-brands fa-github github-logo"></i>
-                            <div class="github-info">
-                                <h3>@abhishek01032007-pixel</h3>
-                                <p>My open-source journey, containing repositories for my Portfolio Website, Smart Schedule App, AI Bot, and other experimental projects.</p>
-                                <a href="https://github.com/abhishek01032007-pixel" target="_blank" class="btn btn-outline mt-3">View GitHub Profile</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Achievements -->
-                    <div class="achievements-section reveal fade-left">
-                        <h2 class="section-heading">Stats & <span class="text-primary">Milestones</span></h2>
-                        <div class="stats-grid">
-                            <div class="stat-box glass-panel">
-                                <span class="counter" data-target="3">0</span><span class="plus">+</span>
-                                <p>Projects Built</p>
-                            </div>
-                            <div class="stat-box glass-panel">
-                                <span class="counter-text text-main" style="font-size: 2.5rem; font-weight: 800;">Multiple</span>
-                                <p>Repositories</p>
-                            </div>
-                            <div class="stat-box glass-panel">
-                                <span class="counter" data-target="2">0</span><span class="plus">+</span>
-                                <p>Years Learning</p>
-                            </div>
-                            <div class="stat-box glass-panel">
-                                <span class="counter-text text-main" style="font-size: 2.5rem; font-weight: 800;">Live</span>
-                                <p>Portfolio Website</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="contact section-padding">
-            <div class="container">
-                <div class="contact-card glass-panel reveal fade-bottom">
-                    <div class="contact-header">
-                        <h2 class="section-heading">Let's <span class="text-primary">Connect</span></h2>
-                        <p>I'm always open to discussing tech, projects, or internship opportunities.</p>
-                    </div>
-                    
-                    <div class="contact-methods">
-                        <a href="mailto:abhishek01032007@gmail.com" class="contact-method glass-panel">
-                            <div class="icon-circle"><i class="fa-regular fa-envelope"></i></div>
-                            <div>
-                                <h4>Email</h4>
-                                <p>abhishek01032007@gmail.com</p>
-                            </div>
-                        </a>
+            // High performance text spotlight calculation
+            if (rafId) cancelAnimationFrame(rafId);
+            rafId = requestAnimationFrame(() => {
+                spotlightElements.forEach(el => {
+                    if (el.classList.contains('spotlight-text-main') || el.classList.contains('spotlight-text-muted')) {
+                        const rect = el.getBoundingClientRect();
+                        const x = e.clientX - rect.left;
+                        const y = e.clientY - rect.top;
                         
-                        <div class="contact-method glass-panel">
-                            <div class="icon-circle"><i class="fa-solid fa-phone"></i></div>
-                            <div>
-                                <h4>Phone</h4>
-                                <p>+91 9444484679</p>
-                            </div>
-                        </div>
-                        
-                        <a href="https://github.com/abhishek01032007-pixel" target="_blank" class="contact-method glass-panel">
-                            <div class="icon-circle"><i class="fa-brands fa-github"></i></div>
-                            <div>
-                                <h4>GitHub</h4>
-                                <p>abhishek01032007-pixel</p>
-                            </div>
-                        </a>
-                        
-                        <a href="https://linkedin.com/in/abhishek-m-444256419" target="_blank" class="contact-method glass-panel">
-                            <div class="icon-circle"><i class="fa-brands fa-linkedin"></i></div>
-                            <div>
-                                <h4>LinkedIn</h4>
-                                <p>Abhishek M</p>
-                            </div>
-                        </a>
-                    </div>
-                    
-                    <form class="contact-form" onsubmit="event.preventDefault(); alert('Message feature coming soon! Please use my email.');">
-                        <div class="form-row">
-                            <input type="text" placeholder="Your Name" required>
-                            <input type="email" placeholder="Your Email" required>
-                        </div>
-                        <input type="text" placeholder="Subject" required>
-                        <textarea rows="4" placeholder="Your Message" required></textarea>
-                        <button type="submit" class="btn btn-primary w-full">Send Message <i class="fa-solid fa-paper-plane"></i></button>
-                    </form>
-                </div>
-            </div>
-        </section>
-    </main>
+                        // Only update CSS variables if mouse is within 150px of the text block to save performance
+                        if (x > -150 && x < rect.width + 150 && y > -150 && y < rect.height + 150) {
+                            el.style.setProperty('--mouse-x', `${x}px`);
+                            el.style.setProperty('--mouse-y', `${y}px`);
+                        } else {
+                            // Move gradient offscreen
+                            el.style.setProperty('--mouse-x', `-999px`);
+                            el.style.setProperty('--mouse-y', `-999px`);
+                        }
+                    }
+                });
+            });
+        });
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <h3>Designed & Built by Abhishek M</h3>
-                <p>B.Tech CSE (IoT)</p>
-                <div class="footer-socials" style="display: flex; gap: 1.5rem; margin-top: 1rem;">
-                    <a href="https://github.com/abhishek01032007-pixel" target="_blank" style="color: var(--text-muted); font-size: 1.5rem;"><i class="fa-brands fa-github"></i></a>
-                    <a href="https://linkedin.com/in/abhishek-m-444256419" target="_blank" style="color: var(--text-muted); font-size: 1.5rem;"><i class="fa-brands fa-linkedin"></i></a>
-                </div>
-                <p class="copyright">&copy; 2026 All Rights Reserved</p>
-            </div>
-        </div>
-    </footer>
+        // Hover Animation for buttons, tags, and navigation
+        const btnElements = document.querySelectorAll('.btn, .nav-item, a, .tag');
+        btnElements.forEach(el => {
+            el.addEventListener('mouseenter', () => mouseGlow.classList.add('active-btn'));
+            el.addEventListener('mouseleave', () => mouseGlow.classList.remove('active-btn'));
+        });
+    }
 
-    <!-- Back to Top Button -->
-    <button id="back-to-top" class="back-to-top" aria-label="Go to top">
-        <i class="fa-solid fa-arrow-up"></i>
-    </button>
+    // 1. Mobile Navigation Toggle
+    const mobileToggle = document.querySelector('.mobile-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    const navItems = document.querySelectorAll('.nav-item');
 
-    <script src="script.js"></script>
-</body>
-</html>
+    if (mobileToggle) {
+        mobileToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = mobileToggle.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            } else {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            }
+        });
+    }
+
+    // Close mobile menu when clicking a link
+    navItems.forEach(item => {
+        item.addEventListener('click', () => {
+            if (navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+                const icon = mobileToggle.querySelector('i');
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            }
+        });
+    });
+
+    // 2. Navbar Background on Scroll & Scroll Progress Bar
+    const navbar = document.getElementById('navbar');
+    const scrollBar = document.getElementById('scrollBar');
+
+    window.addEventListener('scroll', () => {
+        // Navbar styling
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+
+        // Scroll progress bar
+        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        if (scrollBar) {
+            scrollBar.style.width = scrolled + '%';
+        }
+    });
+
+    // 3. ScrollSpy Navigation (IntersectionObserver)
+    const sections = document.querySelectorAll('section');
+    const navAnchors = document.querySelectorAll('.nav-item');
+
+    const scrollSpyOptions = {
+        root: null,
+        rootMargin: '-50% 0px -50% 0px',
+        threshold: 0
+    };
+
+    const scrollSpyObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const currentId = entry.target.getAttribute('id');
+                navAnchors.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${currentId}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        });
+    }, scrollSpyOptions);
+
+    sections.forEach(section => {
+        scrollSpyObserver.observe(section);
+    });
+
+    // 4. Reveal Animations
+    const revealElements = document.querySelectorAll('.reveal');
+    
+    const revealOptions = {
+        threshold: 0.15,
+        rootMargin: "0px 0px -50px 0px"
+    };
+
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+                observer.unobserve(entry.target); // Only animate once
+            }
+        });
+    }, revealOptions);
+
+    revealElements.forEach(el => {
+        revealObserver.observe(el);
+    });
+
+    // 5. Animated Counters
+    const counters = document.querySelectorAll('.counter');
+    const counterObserverOptions = {
+        threshold: 0.5
+    };
+
+    const counterObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const counter = entry.target;
+                const target = +counter.getAttribute('data-target');
+                const duration = 2000; // 2 seconds
+                const increment = target / (duration / 16); // 60fps
+                
+                let current = 0;
+                const updateCounter = () => {
+                    current += increment;
+                    if (current < target) {
+                        counter.innerText = Math.ceil(current);
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+                
+                updateCounter();
+                observer.unobserve(counter);
+            }
+        });
+    }, counterObserverOptions);
+
+    counters.forEach(counter => {
+        counterObserver.observe(counter);
+    });
+
+    // 6. Typewriter Effect
+    const typeWriterElement = document.getElementById('typewriter');
+    if (typeWriterElement) {
+        const words = ['B.Tech CSE (IoT) Student', 'Project Builder', 'Technology Enthusiast', 'Continuous Learner'];
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        
+        function type() {
+            const currentWord = words[wordIndex];
+            
+            if (isDeleting) {
+                typeWriterElement.innerText = currentWord.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typeWriterElement.innerText = currentWord.substring(0, charIndex + 1);
+                charIndex++;
+            }
+            
+            let typingSpeed = isDeleting ? 50 : 100;
+            
+            if (!isDeleting && charIndex === currentWord.length) {
+                typingSpeed = 2000; // Pause at end of word
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                wordIndex = (wordIndex + 1) % words.length;
+                typingSpeed = 500; // Pause before new word
+            }
+            
+            setTimeout(type, typingSpeed);
+        }
+        
+        // Start typing effect after 1 second
+        setTimeout(type, 1000);
+    }
+
+    // 7. Back to Top Button
+    const backToTopBtn = document.getElementById('back-to-top');
+    if (backToTopBtn) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Add to button hover tracking for spotlight
+        if (typeof mouseGlow !== 'undefined' && mouseGlow) {
+            backToTopBtn.addEventListener('mouseenter', () => mouseGlow.classList.add('active-btn'));
+            backToTopBtn.addEventListener('mouseleave', () => mouseGlow.classList.remove('active-btn'));
+        }
+    }
+
+    // 8. Security / Copy Protection
+    document.addEventListener('keydown', (e) => {
+        // Prevent Ctrl+C, Ctrl+X, Ctrl+U (View Source), Ctrl+S (Save)
+        if (e.ctrlKey && ['c', 'C', 'x', 'X', 'u', 'U', 's', 'S'].includes(e.key)) {
+            e.preventDefault();
+        }
+    });
+});
